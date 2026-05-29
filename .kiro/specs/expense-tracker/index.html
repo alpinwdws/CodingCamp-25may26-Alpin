@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense & Budget Visualizer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Expense & Budget Visualizer</h1>
+
+        <div class="balance-box" id="balance-card">
+            <h2>TOTAL BALANCE</h2>
+            <p id="total-balance">$0.00</p>
+            <div class="limit-group">
+                <label for="budget-limit">Set Spending Limit ($):</label>
+                <input type="number" id="budget-limit" placeholder="Contoh: 500" step="0.01">
+            </div>
+            <p id="limit-warning" class="warning-text"></p>
+        </div>
+
+        <div class="form-grid">
+            <div class="form-box">
+                <h3>Add Transaction</h3>
+                <form id="expense-form">
+                    <div class="form-group">
+                        <label for="item-name">Item Name</label>
+                        <input type="text" id="item-name" placeholder="Misal: Cilok">
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount ($)</label>
+                        <input type="number" id="amount" step="0.01" placeholder="0.00">
+                    </div>
+                    <div class="form-group">
+                        <label for="transaction-date">Date</label>
+                        <input type="date" id="transaction-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category">
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Fun">Fun</option>
+                        </select>
+                    </div>
+                    <button type="submit">Add Transaction</button>
+                </form>
+            </div>
+
+            <div class="form-box">
+                <h3>Add Custom Category</h3>
+                <form id="category-form">
+                    <div class="form-group">
+                        <label for="new-category-name">New Category Name</label>
+                        <input type="text" id="new-category-name" placeholder="Misal: Bills, Shopping">
+                    </div>
+                    <button type="submit" class="btn-secondary">Add Category</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="filter-box">
+            <div class="filter-group">
+                <label for="month-filter">Monthly Summary View:</label>
+                <input type="month" id="month-filter">
+            </div>
+            <div class="filter-group">
+                <label for="sort-options">Sort By:</label>
+                <select id="sort-options">
+                    <option value="latest">Latest Date</option>
+                    <option value="oldest">Oldest Date</option>
+                    <option value="amount-high">Highest Amount</option>
+                    <option value="amount-low">Lowest Amount</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="transactions-box">
+                <h3>Transactions</h3>
+                <ul id="transaction-list" class="scrollable-list"></ul>
+            </div>
+
+            <div class="chart-box">
+                <h3>Spending by Category</h3>
+                <canvas id="spending-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
